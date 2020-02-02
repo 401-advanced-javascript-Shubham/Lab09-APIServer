@@ -35,13 +35,13 @@ function getOneProduct(req,res){
 
 function deleteProduct(req,res,next){
   product.delete(req.params.id)
-    .then(result => res.status(200).json(result))
+    .then(deleteRecord => res.status(204).json(deleteRecord))
     .catch(next);
 }
 
 function updateProduct(req,res,next){
   category.put(req.params.id, request.body)
-    .then(result => res.status(200).json(result[0]))
+    .then(updateRecord => res.status(200).json(updateRecord[0]))
     .catch(next);
 }
 

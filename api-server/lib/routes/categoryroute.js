@@ -33,13 +33,13 @@ function getAllCategory(req,res){
   
   function deleteCategory(req,res,next){
     category.delete(req.params.id)
-    .then(result => res.status(200).json(result))
+    .then(deleteRecord => res.status(204).json(deleteRecord))
     .catch(next);
   }
   
   function updateCategory(req,res,next){
-    category.put(req.params.id, request.body)
-    .then(result => res.status(200).json(result[0]))
+    category.update(req.params.id, req.body)
+    .then(updateRecord => res.status(200).json(updateRecord[0]))
     .catch(next);
   }
   

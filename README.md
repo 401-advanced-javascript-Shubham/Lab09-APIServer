@@ -5,8 +5,8 @@
 ### Author: Shubham Majumdar
 
 ### Links and Resources
-* [submission PR](https://github.com/401-advanced-javascript-Shubham/Lab03--Async/pull/2)
-* [Github Actions]()
+* [submission PR]()
+* [Github Actions](https://github.com/401-advanced-javascript-Shubham/Lab09-APIServer/actions)
 
 #### Documentation
 * [api docs](http://xyz.com/api-docs) (API servers)
@@ -15,7 +15,7 @@
 ### Setup
 #### `.env` requirements (where applicable)
 * `PORT` - 27017
-* `MONGODB_URI` - mongodb://localhost:27017/lab08
+* `MONGODB_URI` - mongodb://localhost:27017/lab09
 
 #### How to initialize/run your server app (where applicable)
 * `npm start`

@@ -2,7 +2,7 @@
 
 const schema = require('./product-schema.js');
 
-const MongoCollection =  require('../memory-data-model.js');
+const MongoCollection =  require('../collection.js');
 
 
 class ProductCollection extends MongoCollection {}

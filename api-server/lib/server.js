@@ -24,6 +24,8 @@ app.use(morgan('dev'));
 
 //Our middleware
 app.use(express.json());
+app.use(timestamp);
+app.use(logger);
 
 
 // because these are defined last, they end up as catch-alls.
