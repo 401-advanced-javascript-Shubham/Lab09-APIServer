@@ -6,16 +6,16 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const categoryRoutes = require('../lib/routes/categoryroute.js')
-const productRoutes = require('../lib/routes/productroute.js')
+const apiRoutes = require('./routes/api.js')
 
-const errorHandler = require('./505.js');
-const notFoundHandler = require('./404.js');
+const timestamp = require('./middleware/timestamp.js');
+const logger = require('./middleware/logger.js');
+const errorHandler = require('./middleware/500.js');
+const notFoundHandler = require('./middleware/404.js');
 
 const app = express();
 
-app.use('/api/v1',categoryRoutes);
-app.use('/api/v1',productRoutes);
+
 
 //Third party global middleware
 app.use(cors());
@@ -27,6 +27,9 @@ app.use(express.json());
 app.use(timestamp);
 app.use(logger);
 
+//Routes
+app.use('/api/v1',apiRoutes);
+
 
 // because these are defined last, they end up as catch-alls.
 app.use('*', notFoundHandler);
@@ -37,6 +40,6 @@ module.exports = {
   //exporting app for testing
   apiServer: app,
   start: (port) => {
-    app.listen(port, () => console.log(`Listening on ${PORT}`));
+    app.listen(port, () => console.log(`Listening on ${port}`));
   }
 };

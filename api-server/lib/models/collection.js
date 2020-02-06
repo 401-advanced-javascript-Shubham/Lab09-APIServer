@@ -5,6 +5,7 @@ class Collection {
 
 
   constructor(schema) {
+    this.schema= schema;
   }
 
   get(id) {

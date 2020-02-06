@@ -1,6 +1,6 @@
 'use strict';
 
-const schema = require('./category-schema.js');
+const schema = require('./categories-schema.js');
 
 const MongoCollection =  require('../collection.js');
 
