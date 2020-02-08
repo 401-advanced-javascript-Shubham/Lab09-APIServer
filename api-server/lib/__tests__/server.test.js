@@ -3,12 +3,14 @@
 const server = require('../../lib/server.js');
 const supergoose = require('@code-fellows/supergoose');
 const agent= supergoose(server.apiServer);
+const categories = require('../models/categories/categories-collection.js');
+const products = require('../models/products/products-collection.js');
 
 describe('API Test for categoty', () => {
 
-  beforeEach(() => {
+  // beforeEach(() => {
 
-  })
+  // })
 
   describe('Category Model', () => {
     it('can create() a record', () => {
@@ -31,19 +33,23 @@ describe('API Test for categoty', () => {
     })
   })
  
-  let item = {name: 'Electronics'};
-  return agent.post('/api/v1/category')
-     .send(item)
-     .then(response => {
-       expect(response.statusCode).toBe(200);
-       expect(response.body.id).toBeDefined();
-       expect(response.body.name).toEqual(item.name);
+  it('can post a category', () =>{
 
-     })
-     .catch(error =>{
-       console.log(error);
-       expect(error).not.toBeDefined();
-     })
+    let item = {name: 'Electronics'};
+    return agent.post('/api/v1/category')
+       .send(item)
+       .then(response => {
+         expect(response.statusCode).toBe(200);
+         expect(response.body.id).toBeDefined();
+         expect(response.body.name).toEqual(item.name);
+  
+       })
+       .catch(error =>{
+         console.log(error);
+         expect(error).not.toBeDefined();
+       })
+       .catch(error => expect(error).not.toBeDefined());
+  });
 
   it('can get all records',()=>{
     return agent.get('/api/v1/category')
@@ -113,23 +119,26 @@ describe('API Test for Product', () => {
     quantity:2
   };
   
-  return agent.post('/api/v1/product')
-     .send(item)
-     .then(response => {
-       expect(response.statusCode).toBe(200);
-       expect(response.body.id).toBeDefined();
-       expect(response.body.category_id).toEqual(item.category_id);
-       expect(response.body.price).toEqual(item.price);
-       expect(response.body.weight).toEqual(item.weight);
-       expect(response.body.quantity).toEqual(item.quantity);
-      
+  it('can post a product', () => {
 
-
-     })
-     .catch(error =>{
-       console.log(error);
-       expect(error).not.toBeDefined();
-     })
+    return agent.post('/api/v1/product')
+       .send(item)
+       .then(response => {
+         expect(response.statusCode).toBe(200);
+         expect(response.body.id).toBeDefined();
+         expect(response.body.category_id).toEqual(item.category_id);
+         expect(response.body.price).toEqual(item.price);
+         expect(response.body.weight).toEqual(item.weight);
+         expect(response.body.quantity).toEqual(item.quantity);
+        
+  
+  
+       })
+       .catch(error =>{
+         console.log(error);
+         expect(error).not.toBeDefined();
+       })
+  })
 
   it('can get all records',()=>{
     return agent.get('/api/v1/product')
